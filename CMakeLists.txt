@@ -36,9 +36,11 @@ endif ()
 # Variables for Paths of External Libraries
 set(GLFW_ROOT_DIR external/glfw)
 set(GLAD_ROOT_DIR external/glad)
-
+set(GLM_ROOT_DIR external/glm)
+set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external) 
 
 # Add the External Libraries / Files Directory
+# No need to add subdirectory for GLM and stb_image.h as they are header only libraries
 add_subdirectory(${GLFW_ROOT_DIR})
 add_subdirectory(${GLAD_ROOT_DIR})
 
@@ -50,6 +52,8 @@ add_subdirectory(${GLAD_ROOT_DIR})
 target_include_directories(${PROJECT_NAME} 
 	PUBLIC ${GLFW_ROOT_DIR}/include
 	PUBLIC ${GLAD_ROOT_DIR}/include/glad
+	PUBLIC ${EXTERNAL_DIR}/glm
+	PUBLIC ${EXTERNAL_DIR}
 )
 
 #		Include Files from Outside the Workspace Folder -> Like Vulkan SDK
